@@ -1,0 +1,69 @@
+spring:
+  # Mysql全局配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid: 
+       # 初始化大小,最小空闲,最大连接
+       initial-size: 5
+       min-idle: 5
+       max-active: 50
+       # 连接获取的超时设置,毫秒
+       max-wait: 60000
+       # 检测需要关闭的空闲连接的间隔时长,毫秒
+       time-between-eviction-runs-millis: 60000
+       # 连接的最小生存的时间,毫秒
+       min-evictable-idle-time-millis: 30000
+       # 优化设置
+       validation-query: select 'x'
+       test-while-idle: true
+       test-on-borrow: false
+       test-on-return: false
+       # 开启PSCache,每个连接的PSCache大小
+       pool-prepared-statements: true
+       max-open-prepared-statements: 20
+                   
+  # Jackson全局配置        
+  jackson:
+    time-zone: GMT+8      
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non-null
+    serialization:
+      fail-on-empty-beans: true
+      write-dates-as-timestamps: false
+      write-null-map-values: false
+    deserialization:
+      fail-on-unknown-properties: true  
+    parser:
+      allow-comments: true
+      allow-unquoted-field-names: true
+      allow-single-quotes: true 
+
+# Mybatis全局配置    
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    use-column-label: true
+    
+# guaboy-common的redis相关的全局配置
+redis: 
+  host: 123456
+  port: 123456
+  password: 123456
+  timeout: 123456
+  jedis:
+    # Jedis连接池常规配置,依次为：最大连接数(-1不限)、最大空闲数、最小空闲数、获取连接超时(毫秒,-1不超时)
+    maxActive: -1
+    maxIdle: 10
+    minIdle: 0
+    maxWaitMillis: -1
+    # 优化配置项,删除后会采用系统默认值,依次为：获取连接是否检验有效性、返回连接是否检验有效性、是否检测空闲连接的有效性、空闲连接最短时长(毫秒)、扫描间隔(毫秒)、扫描数量上限
+    testOnBorrow: true
+    testOnReturn: true
+    testWhileIdle: false
+    minEvictableIdleTimeMillis: 30000
+    timeBetweenEvictionRunsMillis: 60000
+    numTestsPerEvictionRun: 1000  
+    
+    
+    
