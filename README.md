@@ -1,1 +1,1 @@
-# config-repo 用springcolud微服务的配置中心的远程仓库
+个人测试专用
