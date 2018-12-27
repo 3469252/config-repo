@@ -1,0 +1,50 @@
+spring:
+  # Mysql全局配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/sysadmin?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 88888888
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid: 
+       # 初始化大小,最小空闲,最大连接
+       initial-size: 5
+       min-idle: 5
+       max-active: 50
+       # 连接获取的超时设置,毫秒
+       max-wait: 60000
+       # 检测需要关闭的空闲连接的间隔时长,毫秒
+       time-between-eviction-runs-millis: 60000
+       # 连接的最小生存的时间,毫秒
+       min-evictable-idle-time-millis: 30000
+       # 优化设置
+       validation-query: select 'x'
+       test-while-idle: true
+       test-on-borrow: false
+       test-on-return: false
+       # 开启PSCache,每个连接的PSCache大小
+       pool-prepared-statements: true
+       max-open-prepared-statements: 20
+                   
+  # Jackson全局配置        
+  jackson:
+    time-zone: GMT+8      
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non-null
+    serialization:
+      fail-on-empty-beans: true
+      write-dates-as-timestamps: false
+      write-null-map-values: false
+    deserialization:
+      fail-on-unknown-properties: true  
+    parser:
+      allow-comments: true
+      allow-unquoted-field-names: true
+      allow-single-quotes: true 
+
+
+# Mybatis全局配置    
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    use-column-label: true
