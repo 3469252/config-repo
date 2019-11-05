@@ -1,3 +1,13 @@
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:9001/eureka/
+    register-with-eureka: true  
+  instance: 
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: false  
+
 spring:
   # Mysql全局配置
   datasource:
