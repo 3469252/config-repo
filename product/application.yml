@@ -33,47 +33,30 @@ spring:
        pool-prepared-statements: true
        max-open-prepared-statements: 20
                    
-  # Jackson全局配置        
+  # Jackson全局配置
   jackson:
-    time-zone: GMT+8      
+    time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-    default-property-inclusion: non-null
+    default-property-inclusion: always
+    generator:
+      write-numbers-as-strings: true
     serialization:
       fail-on-empty-beans: true
       write-dates-as-timestamps: false
       write-null-map-values: false
     deserialization:
-      fail-on-unknown-properties: true  
+      fail-on-unknown-properties: true
     parser:
       allow-comments: true
       allow-unquoted-field-names: true
-      allow-single-quotes: true 
+      allow-single-quotes: true
 
-# Mybatis全局配置    
+
+# Mybatis全局配置
 mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
     use-column-label: true
-    
-# guaboy-common的redis相关的全局配置
-redis: 
-  host: 123456
-  port: 123456
-  password: 123456
-  timeout: 123456
-  jedis:
-    # Jedis连接池常规配置,依次为：最大连接数(-1不限)、最大空闲数、最小空闲数、获取连接超时(毫秒,-1不超时)
-    maxActive: -1
-    maxIdle: 10
-    minIdle: 0
-    maxWaitMillis: -1
-    # 优化配置项,删除后会采用系统默认值,依次为：获取连接是否检验有效性、返回连接是否检验有效性、是否检测空闲连接的有效性、空闲连接最短时长(毫秒)、扫描间隔(毫秒)、扫描数量上限
-    testOnBorrow: true
-    testOnReturn: true
-    testWhileIdle: false
-    minEvictableIdleTimeMillis: 30000
-    timeBetweenEvictionRunsMillis: 60000
-    numTestsPerEvictionRun: 1000  
-    
-    
+    call-setters-on-nulls: true
     
